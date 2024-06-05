@@ -179,11 +179,13 @@
         .getElementById("trace")
         .addEventListener("click", () => console.trace("Console Trace Demo"));
 
-      document
-        .getElementById("trigger-error")
-        .addEventListener("click", () =>
-          console.error("Error: Something went wrong!")
-        );
+      document.getElementById("trigger-error").addEventListener("click", () => {
+        try {
+          aFunctionThatDoesNotExist();
+        } catch (error) {
+          console.error("Global Error Found: ", error);
+        }
+      });
 
       document.getElementById("globalError").addEventListener("click", () => {
         try {
